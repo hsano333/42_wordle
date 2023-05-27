@@ -8,6 +8,7 @@
 #include <sys/time.h>
 #include <algorithm>
 #include <ctype.h>
+#include <random>
 
 using std::cin;
 using std::cout;
@@ -62,7 +63,10 @@ void Dictionary::load_dictionary(char *path)
 
 string Dictionary::get_word()
 {
-    size_t i = (((double)rand())/RAND_MAX) * words.size();
+    // size_t i = (((double)rand())/RAND_MAX) * words.size();
+    std::random_device seed;
+    std::mt19937 engine(seed());
+    size_t i = engine() % words.size();
     return (words[i]);
 }
 
