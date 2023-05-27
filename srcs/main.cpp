@@ -13,6 +13,8 @@ std::vector<std::string> Dictionary::words;
 
 int main(int argc, char** argv)
 {
+    //int test = getchar();
+    //printf("test getchar:%d\n", test);
     srand(time(NULL));
     if (argc != 2){
         cout << "Please specify a dictionary file" << endl;

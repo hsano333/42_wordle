@@ -115,6 +115,7 @@ bool invalid_char(char c)
 #include <unistd.h>
 void Wordle::play(std::string word)
 {
+    int ic;
     char c;
     this->render();
     while(1)
@@ -122,7 +123,8 @@ void Wordle::play(std::string word)
         while(1)
         {
             clear();
-            read(0, &c, 1);
+            read(0, &ic, 4);
+            c = (char)ic;
             if (invalid_char(c)){
                 continue;
             }
