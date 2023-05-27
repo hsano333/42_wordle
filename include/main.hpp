@@ -3,4 +3,6 @@
 #define BS 8
 #define BS2 127
 #define CR 13
-#define CHEAT 1 
+#ifndef CHEAT
+# define CHEAT 0 
+#endif

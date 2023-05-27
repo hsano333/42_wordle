@@ -16,6 +16,10 @@ LDFLAGS :=  -lncurses
 CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++14
 
+ifdef WITH_CHEAT
+CXXFLAGS += -D CHEAT=1
+endif
+
 all:
 	@make $(NAME)	
 
@@ -37,12 +41,18 @@ fclean	:	clean
 
 re	:		fclean all
 
+cheat 	: fclean
+		make WITH_CHEAT=1
+
 bonus	:	
 			@make WITH_BONUS=1
+
+run		:
+	./${NAME} ./words.txt
 
 ifeq ($(findstring clean,$(MAKECMDGOALS)),)
 -include $(DEPS)
 endif
 
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean bonus re cheat
 
