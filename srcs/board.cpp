@@ -125,7 +125,7 @@ bool Board::filled()
 
 bool Board::line_filled()
 {
-    return (cur_row >= B_ROW);
+    return (cur_row >= 1);
 }
 
 int Board::get_line()

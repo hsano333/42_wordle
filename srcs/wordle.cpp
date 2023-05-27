@@ -130,7 +130,12 @@ void Wordle::play(std::string word)
             this->board.input(c);
             this->render();
             if (c == CR){
+                if(this->board.line_filled()){
                     break;
+                }else{
+                    printw("\n Error:Blank\n", this->board.get_line());
+                    refresh();
+                }
             }
         }
 
@@ -139,7 +144,7 @@ void Wordle::play(std::string word)
         this->render();
         if (this->board.filled() || result){
             if (result){
-                printw("\nCongratulations you found the word TIMES in %d guesses\n", this->board.get_line());
+                printw("\nCongratulations you found the word %s in %d guesses\n",word.c_str(),  this->board.get_line());
             }else{
                 printw("\nUnfortunately, you coludn't find the word\n");
             }
