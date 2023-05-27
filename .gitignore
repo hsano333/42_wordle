@@ -1,6 +1,0 @@
-a.out
-*.a
-*.o
-.*
-!.gitignore
-wordle
