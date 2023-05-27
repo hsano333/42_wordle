@@ -54,5 +54,5 @@ ifeq ($(findstring clean,$(MAKECMDGOALS)),)
 -include $(DEPS)
 endif
 
-.PHONY: all clean fclean bonus re cheat
+.PHONY: all clean fclean bonus re cheat run
 
