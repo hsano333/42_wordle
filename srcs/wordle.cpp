@@ -146,16 +146,16 @@ void Wordle::play(std::string word)
         this->render();
         if (this->board.filled() || result){
             if (result){
-                printw("\nCongratulations you found the word %s in %d guesses\n",word.c_str(),  this->board.get_line());
+                printw("\nCongratulations you found the word %s in %d guesses \n",word.c_str(),  this->board.get_line());
             }else{
-                printw("\nUnfortunately, you coludn't find the word\n");
+                printw("\nUnfortunately, you coludn't find the word %s \n", word.c_str());
             }
             break;
         }else{
             refresh();
         }
     }
-    printw("input something to play next game\n");
+    printw("will you play next game?(y/n)\n");
     refresh();
     read(0, &c, 1);
     while (!(tolower(c) == 'y' || tolower(c) == 'n'))
