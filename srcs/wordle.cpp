@@ -158,6 +158,14 @@ void Wordle::play(std::string word)
     printw("input something to play next game\n");
     refresh();
     read(0, &c, 1);
+    while (!(tolower(c) == 'y' || tolower(c) == 'n'))
+    {
+        read(0, &c, 1);
+    }
     clear();
+    if (tolower(c) == 'n')
+    {
+        exit(0);
+    }
 }
 
