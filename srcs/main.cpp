@@ -13,8 +13,6 @@ std::vector<std::string> Dictionary::words;
 
 int main(int argc, char** argv)
 {
-    //int test = getchar();
-    //printf("test getchar:%d\n", test);
     srand(time(NULL));
     if (argc != 2){
         cout << "Please specify a dictionary file" << endl;
@@ -22,6 +20,17 @@ int main(int argc, char** argv)
     }
     try{
         Dictionary::load_dictionary(argv[1]);
+    }catch (std::exception &e){
+        cout << e.what() << endl;
+        cout << "Invalid dictionary file" << endl;
+        exit(1);
+    }catch (...){
+        cout << "Invalid dictionary file?" << endl;
+        exit(1);
+
+    }
+
+    try{
         Wordle game;
         while(1)
         {
@@ -33,7 +42,9 @@ int main(int argc, char** argv)
             game.board.reset();
         }
     }catch (std::exception &e){
+        cout << e.what() << endl;
         cout << "Invalid dictionary file" << endl;
+        endwin();
         exit(1);
     }
     return (0);

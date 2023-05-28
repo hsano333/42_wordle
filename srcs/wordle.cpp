@@ -22,7 +22,6 @@ Wordle::Wordle() : win(NULL)
 
 Wordle::~Wordle()
 {
-    //free(this->win);
 	endwin();
 }
 
@@ -165,6 +164,7 @@ void Wordle::play(std::string word)
     clear();
     if (tolower(c) == 'n')
     {
+        endwin();
         exit(0);
     }
 }

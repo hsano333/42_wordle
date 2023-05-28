@@ -1,5 +1,6 @@
 #include "dictionary.hpp"
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <limits>
@@ -16,17 +17,6 @@ using std::endl;
 using std::string;
 using std::vector;
 
-/*
-Dictionary::Dictionary(char *filepath) : path(filepath)
-{
-    Dictionary::load_dictionary();
-}
-
-Dictionary::~Dictionary()
-{
-    ;
-}
-*/
 
 static bool is_alphabet(const string &str)
 {
@@ -38,13 +28,34 @@ static bool is_alphabet(const string &str)
 
 }
 
-void Dictionary::load_dictionary(char *path)
+bool check_blank_file(char *path)
 {
     int fd = open(path, O_RDONLY);
     if (fd < 0){
         cout << strerror(errno) << endl;
         throw std::exception();
     }
+
+    char tmp = '1';
+    int rval = read(fd, &tmp, 1);
+    if (rval <= 0){
+        cout << "Error:Blank file" << endl;
+        throw std::exception();
+    }
+    close(fd);
+    return (true);
+
+}
+
+void Dictionary::load_dictionary(char *path)
+{
+    check_blank_file(path);
+    int fd = open(path, O_RDONLY);
+    if (fd < 0){
+        cout << strerror(errno) << endl;
+        throw std::exception();
+    }
+
     int fd_cin_bk = dup(0);
     dup2(0, fd_cin_bk);
     string word;
