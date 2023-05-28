@@ -89,13 +89,16 @@ bool Board::enter(std::string &target_word)
         }
     }
     for (size_t i = 0; i < B_ROW; i++) {
-        for (size_t j = 0; j < B_ROW; j++) {
-            if(line_word[i] == target_word[j] && is_use_char[j] == false) {
-                this->board[this->cur_col][i].color = 16;
-                is_use_char[j] = true;
-                break;  
-            } else if (j == B_ROW - 1 && this->board[this->cur_col][i].color == 0) {
-                this->board[this->cur_col][i].color = 17;
+        if (this->board[this->cur_col][i].color == 0)
+        {
+            for (size_t j = 0; j < B_ROW; j++) {
+                if(line_word[i] == target_word[j] && is_use_char[j] == false) {
+                    this->board[this->cur_col][i].color = 16;
+                    is_use_char[j] = true;
+                    break;  
+                } else if (j == B_ROW - 1 && this->board[this->cur_col][i].color == 0) {
+                    this->board[this->cur_col][i].color = 17;
+                }
             }
         }
     }
