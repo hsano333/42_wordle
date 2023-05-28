@@ -111,7 +111,7 @@ bool Board::enter(std::string &target_word)
 void Board::reset()
 {
     for(size_t j=0;j<B_COL;j++){
-        for(size_t i=0;i<B_COL;i++){
+        for(size_t i=0;i<B_ROW;i++){
             this->board[j][i].c = ' ';
             this->board[j][i].color = 1;
         }

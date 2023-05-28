@@ -43,7 +43,6 @@ int main(int argc, char** argv)
         }
     }catch (std::exception &e){
         cout << e.what() << endl;
-        cout << "Invalid dictionary file" << endl;
         endwin();
         exit(1);
     }
